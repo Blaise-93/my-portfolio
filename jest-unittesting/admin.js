@@ -16,5 +16,9 @@ class User {
         
         return `${this.firstName} ${this.lastName}`;
     }
+    // manipulating window api to assert it's test
+    sayMyName() {
+        window.alert(this.fullName)
+    }
 } 
  
