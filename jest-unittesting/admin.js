@@ -2,11 +2,15 @@ class User {
     firstName;
     lastName;
     middleName;
+    id;
+    userService;
     
-    constructor(data = {}){
+    constructor(data, userService){
         this.firstName = data.firstName || '';
         this.lastName = data.lastName || '';
         this.middleName = data.middleName || '';
+        this.id = data.id;
+        this.userService = userService;
     }
         
     get fullName() {
@@ -16,9 +20,22 @@ class User {
         
         return `${this.firstName} ${this.lastName}`;
     }
-    // manipulating window api to assert it's test
+    
+    async getMyFullUserData() {
+        return this.userService.getUserById(this.id);
+    }
+    
     sayMyName() {
-        window.alert(this.fullName)
+        alert(this.fullName);
+    }
+    
+    getCodeName() {
+        const isATestingGod = confirm('Are you a testing god?');
+        
+        if(isATestingGod) {
+            return 'TESTING GOD!'
+        } else {
+            return `Scrub skipping tests in his best friend's ride!`;
+        }
     }
 } 
- 
